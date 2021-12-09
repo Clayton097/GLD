@@ -383,7 +383,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 36177029}
+      - m_Target: {fileID: 981502134}
         m_TargetAssemblyTypeName: ChangeScene, Assembly-CSharp
         m_MethodName: LoadScene
         m_Mode: 5
@@ -582,7 +582,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 36177029}
+      - m_Target: {fileID: 981502134}
         m_TargetAssemblyTypeName: ChangeScene, Assembly-CSharp
         m_MethodName: ExitGame
         m_Mode: 1
