@@ -73,23 +73,29 @@ public class BulletScript : MonoBehaviour
         */
 
         //Destroy skeleton and bullet on collision.
-        if (collision.transform.tag == "Skeleton")
+        if (collision.transform.tag == "Enemy")
         {
             //Destroy bullet object
             Destroy(collision.gameObject);
-
-            Debug.Log("Skeleton");
+            Debug.Log("Enemy Destroyed");
             Destroy(gameObject);
         }
 
+        /*
         //Destroy bug and bullet on collision.
         if (collision.transform.tag == "Bug")
         {
             //Destroy bullet object
             Destroy(collision.gameObject);
-
             Debug.Log("Bug");
             Destroy(gameObject);
+        }
+        */
+
+        //Destroy bullet on collision.
+        if (collision.transform.tag == "DestroyBulletEnvoirement")
+        {
+            Destroy(this.gameObject);
         }
     }
 

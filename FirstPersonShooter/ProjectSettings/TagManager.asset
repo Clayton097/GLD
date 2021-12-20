@@ -9,6 +9,8 @@ TagManager:
   - Target
   - Skeleton
   - Bug
+  - Enemy
+  - DestroyBulletEnvoirement
   layers:
   - Default
   - TransparentFX
