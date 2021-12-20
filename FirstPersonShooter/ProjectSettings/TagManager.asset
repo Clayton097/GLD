@@ -11,6 +11,7 @@ TagManager:
   - Bug
   - Enemy
   - DestroyBulletEnvoirement
+  - HealthPotion
   layers:
   - Default
   - TransparentFX
