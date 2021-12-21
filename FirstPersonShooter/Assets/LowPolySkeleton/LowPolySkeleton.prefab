@@ -1748,6 +1748,7 @@ MonoBehaviour:
   maxHealth: 100
   healthBarUI: {fileID: 3671275590470130461}
   slider: {fileID: 2857781022815959304}
+  ItemToDrop: {fileID: 0}
 --- !u!195 &7334005742123910950
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1784,11 +1785,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   navAgent: {fileID: 7334005742123910950}
   target: {fileID: 0}
-  walkSpeed: 0.5
+  walkSpeed: 2
   runSpeed: 4
   patrolForThisTime: 15
-  chaseDistance: 100
-  attackDistance: 1.5
+  chaseDistance: 50
+  attackDistance: 1
   waitBeforeAttack: 1
   chaseAfterAttackDistance: 2
   patrolRadiusMin: 20

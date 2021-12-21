@@ -72,6 +72,12 @@ public class BulletScript : MonoBehaviour
         }
         */
 
+        //Destroy bullet on collision.
+        if (collision.transform.tag == "DestroyBulletEnvoirement")
+        {
+            Destroy(this.gameObject);
+        }
+
         //Destroy skeleton and bullet on collision.
         if (collision.transform.tag == "Enemy")
         {
@@ -92,11 +98,6 @@ public class BulletScript : MonoBehaviour
         }
         */
 
-        //Destroy bullet on collision.
-        if (collision.transform.tag == "DestroyBulletEnvoirement")
-        {
-            Destroy(this.gameObject);
-        }
     }
 
     private IEnumerator DestroyTimer()

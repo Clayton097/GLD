@@ -9,6 +9,8 @@ public class EnemyHealth : MonoBehaviour
     public float maxHealth;
     public GameObject healthBarUI;
     public Slider slider;
+
+    public GameObject ItemToDrop;
     void Start()
     {
         health = maxHealth;
@@ -24,6 +26,8 @@ public class EnemyHealth : MonoBehaviour
 
         if (health <= 0)
         {
+            //Debug.Log("Item Dropped");
+            //Instantiate(ItemToDrop, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
 
@@ -31,6 +35,8 @@ public class EnemyHealth : MonoBehaviour
         {
             health = maxHealth;
         }
+
+
     }
 
     float CalculateHealth()

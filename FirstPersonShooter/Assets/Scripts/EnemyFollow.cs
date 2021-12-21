@@ -35,6 +35,8 @@ public class EnemyFollow : MonoBehaviour
     //Patrol range
     public float patrolRadiusMin = 20f, patrolRadiusMax = 60f;
 
+    private PlayerHealth playerHealth;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -162,6 +164,8 @@ public class EnemyFollow : MonoBehaviour
         {
             skeletonAnimator.Attack(true);
             attackTimer = 0f;
+
+            //playerHealth.TakeDamage(5);
             //zombieAudio.playAttack();
         }
 
