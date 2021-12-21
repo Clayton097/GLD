@@ -12,6 +12,7 @@ TagManager:
   - Enemy
   - DestroyBulletEnvoirement
   - HealthPotion
+  - Coin
   layers:
   - Default
   - TransparentFX

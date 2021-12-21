@@ -756,8 +756,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3968441568344008033}
   m_LocalRotation: {x: -0.0036843985, y: 0.70738494, z: 0.7068012, w: 0.0050100796}
-  m_LocalPosition: {x: 0.010721817, y: -0.00007797241, z: -0.0004193878}
-  m_LocalScale: {x: 1, y: 1.000001, z: 1}
+  m_LocalPosition: {x: 0.0285, y: -0.0025, z: 0.054}
+  m_LocalScale: {x: 1.3018, y: 1.8988018, z: 1}
   m_Children: []
   m_Father: {fileID: 5716717707400869463}
   m_RootOrder: 0
@@ -1786,14 +1786,14 @@ MonoBehaviour:
   navAgent: {fileID: 7334005742123910950}
   target: {fileID: 0}
   walkSpeed: 2
-  runSpeed: 4
-  patrolForThisTime: 15
-  chaseDistance: 50
-  attackDistance: 1
-  waitBeforeAttack: 1
+  runSpeed: 2
+  patrolForThisTime: 7.5
+  chaseDistance: 25
+  attackDistance: 2.5
+  waitBeforeAttack: 0.35
   chaseAfterAttackDistance: 2
-  patrolRadiusMin: 20
-  patrolRadiusMax: 60
+  patrolRadiusMin: 10
+  patrolRadiusMax: 30
 --- !u!114 &1150613293193613251
 MonoBehaviour:
   m_ObjectHideFlags: 0
