@@ -9,31 +9,31 @@ public class InventoryManager : MonoBehaviour
     public bool showInventory = false;
     private Animator animator;
 
-    [Tooltip("Items Selection Panel")]
-    public GameObject itemsSelectionPanel;
+    public GameObject Inventory;
+
     // Start is called before the first frame update
     void Start()
     {
-        animator = itemsSelectionPanel.GetComponent<Animator>();
+        animator = Inventory.GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-
-    }
-
-    public void ShowToggleInventory()
-    {
-        if (showInventory == false)
+        if (Input.GetKeyDown("tab"))
         {
-            showInventory = true;
-            animator.SetTrigger("InventoryIn");
-        }
-        else
-        {
-            showInventory = false;
-            animator.SetTrigger("InventoryOut");
+            if (showInventory == true)
+            {
+                Inventory.SetActive(true);
+                animator.SetTrigger("InventoryIn");
+                showInventory = false;
+            }
+            else
+            {
+                Inventory.SetActive(false);
+                animator.SetTrigger("InventoryOut");
+                showInventory = true;
+            }
         }
     }
 }

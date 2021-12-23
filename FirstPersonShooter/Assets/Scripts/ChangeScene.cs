@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class ChangeScene : MonoBehaviour
 {
 
+    public PlayerHealth playerHealth;
     //Load first Scene
     public void LoadScene(string sceneName)
     {
@@ -23,6 +24,11 @@ public class ChangeScene : MonoBehaviour
     public void MainMenu()
     {
         SceneManager.LoadScene("Main Menu");
+    }
+
+    public void GameOver()
+    {
+        SceneManager.LoadScene("GameOver");
     }
 
 }

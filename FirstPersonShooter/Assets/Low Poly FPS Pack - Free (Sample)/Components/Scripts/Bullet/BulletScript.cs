@@ -5,6 +5,9 @@ using System.Collections;
 public class BulletScript : MonoBehaviour
 {
 
+    [SerializeField]
+    float bulletDamage = 20f;
+
     [Range(5, 100)]
     [Tooltip("After how long time should the bullet prefab be destroyed?")]
     public float destroyAfter;
@@ -27,64 +30,40 @@ public class BulletScript : MonoBehaviour
     //If the bullet collides with anything
     private void OnCollisionEnter(Collision collision)
     {
-        /*
-        //If destroy on impact is false, start 
-        //coroutine with random destroy timer
-        if (!destroyOnImpact)
-        {
-            StartCoroutine(DestroyTimer());
-        }
-        //Otherwise, destroy bullet on impact
-        else
-        {
-            Destroy(gameObject);
-        }
-
-        //If bullet collides with "Metal" tag
-        if (collision.transform.tag == "Metal")
-        {
-            //Instantiate random impact prefab from array
-            Instantiate(metalImpactPrefabs[Random.Range
-                (0, metalImpactPrefabs.Length)], transform.position,
-                Quaternion.LookRotation(collision.contacts[0].normal));
-            //Destroy bullet object
-            Destroy(gameObject);
-        }
-
-        //If bullet collides with "Target" tag
-        if (collision.transform.tag == "Target")
-        {
-            //Toggle "isHit" on target object
-            collision.transform.gameObject.GetComponent
-                <TargetScript>().isHit = true;
-            //Destroy bullet object
-            Destroy(gameObject);
-        }
-
-        //If bullet collides with "ExplosiveBarrel" tag
-        if (collision.transform.tag == "ExplosiveBarrel")
-        {
-            //Toggle "explode" on explosive barrel object
-            collision.transform.gameObject.GetComponent
-                <ExplosiveBarrelScript>().explode = true;
-            //Destroy bullet object
-            Destroy(gameObject);
-        }
-        */
-
         //Destroy bullet on collision.
         if (collision.transform.tag == "DestroyBulletEnvoirement")
         {
             Destroy(this.gameObject);
         }
 
-        //Destroy skeleton and bullet on collision.
+        //Bugs health bar decrease on each bullet hit and destroy bullet.
         if (collision.transform.tag == "Enemy")
         {
-            //Destroy bullet object
-            Destroy(collision.gameObject);
-            Debug.Log("Enemy Destroyed");
+            collision.gameObject.GetComponent<EnemyHealth>().health -= bulletDamage;
             Destroy(gameObject);
+            //If health  lower than 0 destroy enemy.
+            if (collision.gameObject.GetComponent<EnemyHealth>().health <= 0) {
+                //Destroy bullet object
+                collision.gameObject.GetComponent<EnemyHealth>().DropCoin(Random.Range(1,3));
+                Destroy(collision.gameObject);
+                Debug.Log("Bug Destroyed");
+                Destroy(gameObject);
+            }
+        }
+
+        //Skeleton health bar decrease on each bullet hit and destroy bullet.
+        if (collision.transform.tag == "Skeleton")
+        {
+            collision.gameObject.GetComponent<EnemyHealth>().health -= bulletDamage;
+            Destroy(gameObject);
+            //If health  lower than 0 destroy enemy.
+            if (collision.gameObject.GetComponent<EnemyHealth>().health <= 0)
+            {
+                //Destroy bullet object
+                Destroy(collision.gameObject);
+                Debug.Log("Skeleton Destroyed");
+                Destroy(gameObject);
+            }
         }
 
         /*
