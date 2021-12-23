@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System;
 
 // ----- Low Poly FPS Pack Free Version -----
 public class AutomaticGunScriptLPFP : MonoBehaviour {
@@ -70,6 +71,7 @@ public class AutomaticGunScriptLPFP : MonoBehaviour {
 	//Totalt amount of ammo
 	[Tooltip("How much ammo the weapon should have.")]
 	public int ammo;
+    private int maxAmmo;
 	//Check if out of ammo
 	private bool outOfAmmo;
 
@@ -175,10 +177,10 @@ public class AutomaticGunScriptLPFP : MonoBehaviour {
 		//Get weapon name from string to text
 		currentWeaponText.text = weaponName;
 		//Set total ammo text from total ammo int
-		totalAmmoText.text = ammo.ToString();
-
-		//Weapon sway
-		initialSwayPosition = transform.localPosition;
+		totalAmmoText.text = (ammo * 10).ToString();
+        maxAmmo = ammo * 10;
+        //Weapon sway
+        initialSwayPosition = transform.localPosition;
 
 		//Set the shoot sound to audio source
 		shootAudioSource.clip = SoundClips.shootSound;
@@ -245,7 +247,7 @@ public class AutomaticGunScriptLPFP : MonoBehaviour {
 		//If randomize muzzleflash is true, genereate random int values
 		if (randomMuzzleflash == true) 
 		{
-			randomMuzzleflashValue = Random.Range (minRandomValue, maxRandomValue);
+			randomMuzzleflashValue = UnityEngine.Random.Range (minRandomValue, maxRandomValue);
 		}
 
 		//Timescale settings
@@ -314,7 +316,7 @@ public class AutomaticGunScriptLPFP : MonoBehaviour {
 			//Toggle bool
 			outOfAmmo = true;
 			//Auto reload if true
-			if (autoReload == true && !isReloading) 
+			if (autoReload == true && !isReloading && maxAmmo != 0) 
 			{
 				StartCoroutine (AutoReload ());
 			}
@@ -330,7 +332,7 @@ public class AutomaticGunScriptLPFP : MonoBehaviour {
 			
 		//AUtomatic fire
 		//Left click hold 
-		if (Input.GetMouseButton (0) && !outOfAmmo && !isReloading && !isInspecting && !isRunning) 
+		if (Input.GetMouseButton (0) && !outOfAmmo && !isReloading && !isInspecting && !isRunning && ammo != 0) 
 		{
 			//Shoot automatic
 			if (Time.time - lastFired > 1 / fireRate) 
@@ -362,7 +364,7 @@ public class AutomaticGunScriptLPFP : MonoBehaviour {
 							if (enableSparks == true) 
 							{
 								//Emit random amount of spark particles
-								sparkParticles.Emit (Random.Range (minSparkEmission, maxSparkEmission));
+								sparkParticles.Emit (UnityEngine.Random.Range (minSparkEmission, maxSparkEmission));
 							}
 							if (enableMuzzleflash == true) 
 							{
@@ -391,7 +393,7 @@ public class AutomaticGunScriptLPFP : MonoBehaviour {
 							if (enableSparks == true) 
 							{
 								//Emit random amount of spark particles
-								sparkParticles.Emit (Random.Range (minSparkEmission, maxSparkEmission));
+								sparkParticles.Emit (UnityEngine.Random.Range (minSparkEmission, maxSparkEmission));
 							}
 							if (enableMuzzleflash == true) 
 							{
@@ -456,7 +458,7 @@ public class AutomaticGunScriptLPFP : MonoBehaviour {
 		}
 
 		//Reload 
-		if (Input.GetKeyDown (KeyCode.R) && !isReloading && !isInspecting) 
+		if (Input.GetKeyDown (KeyCode.R) && !isReloading && !isInspecting && maxAmmo != 0) 
 		{
 			//Reload
 			Reload ();
@@ -503,6 +505,8 @@ public class AutomaticGunScriptLPFP : MonoBehaviour {
 	}
 
 	private IEnumerator AutoReload () {
+        UpdateMaxAmmo();
+
 		//Wait set amount of time
 		yield return new WaitForSeconds (autoReloadDelay);
 
@@ -529,10 +533,17 @@ public class AutomaticGunScriptLPFP : MonoBehaviour {
 		outOfAmmo = false;
 	}
 
-	//Reload
-	private void Reload () {
-		
-		if (outOfAmmo == true) 
+    private void UpdateMaxAmmo()
+    {
+        maxAmmo -= ammo;
+        totalAmmoText.text = maxAmmo.ToString();
+    }
+
+    //Reload
+    private void Reload () {
+        UpdateMaxAmmo();
+
+        if (outOfAmmo == true) 
 		{
 			//Play diff anim if out of ammo
 			anim.Play ("Reload Out Of Ammo", 0, 0f);

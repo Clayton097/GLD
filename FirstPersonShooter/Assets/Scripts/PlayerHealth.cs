@@ -9,9 +9,12 @@ public class PlayerHealth : MonoBehaviour
     public int maxHealth = 100;
     public int currentHealth;
 
+    private ItemInventory inventory;
+
     // Start is called before the first frame update
     void Start()
     {
+        inventory = FindObjectOfType<ItemInventory>();
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
     }
@@ -51,13 +54,14 @@ public class PlayerHealth : MonoBehaviour
     {
         if (collider.gameObject.CompareTag("HealthPotion"))
         {
-            if (currentHealth >= 100) { }
-            else
-            {
-                HealPlayer(10);
-                collider.gameObject.SetActive(false);
-                Debug.Log("Player Curretn Health  = " + currentHealth);
-            }
+            inventory.AddItem(new ItemInventory.ItemPicked(collider.gameObject, collider.gameObject.tag));
+            Destroy(collider.gameObject);
+            //if (!(currentHealth >= 100))
+            //{
+            //    HealPlayer(10);
+            //    collider.gameObject.SetActive(false);
+            //    Debug.Log("Player Curretn Health  = " + currentHealth);
+            //}
         }
     }
 

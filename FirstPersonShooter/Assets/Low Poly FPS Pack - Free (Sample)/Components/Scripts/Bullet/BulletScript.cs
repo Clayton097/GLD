@@ -55,11 +55,17 @@ public class BulletScript : MonoBehaviour
         if (collision.transform.tag == "Skeleton")
         {
             collision.gameObject.GetComponent<EnemyHealth>().health -= bulletDamage;
+            //Destroy bullet object
             Destroy(gameObject);
             //If health  lower than 0 destroy enemy.
             if (collision.gameObject.GetComponent<EnemyHealth>().health <= 0)
             {
-                //Destroy bullet object
+                var gates = FindObjectsOfType<Oscilator>();
+                foreach (var gate in gates)
+                {
+                    gate.TryOpenGate(collision.gameObject.GetComponent<EnemyHealth>().canOpenGate);
+                }
+
                 Destroy(collision.gameObject);
                 Debug.Log("Skeleton Destroyed");
                 Destroy(gameObject);

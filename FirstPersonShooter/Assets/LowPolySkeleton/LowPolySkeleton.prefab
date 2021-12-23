@@ -1674,7 +1674,7 @@ GameObject:
   - component: {fileID: 5713150641834342079}
   m_Layer: 0
   m_Name: LowPolySkeleton
-  m_TagString: Enemy
+  m_TagString: Skeleton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1748,7 +1748,11 @@ MonoBehaviour:
   maxHealth: 100
   healthBarUI: {fileID: 3671275590470130461}
   slider: {fileID: 2857781022815959304}
-  ItemToDrop: {fileID: 0}
+  coin: {fileID: 0}
+  enemyDamage: 5
+  thrust: 1000
+  openGate: 0
+  maxDistance: 10
 --- !u!195 &7334005742123910950
 NavMeshAgent:
   m_ObjectHideFlags: 0
