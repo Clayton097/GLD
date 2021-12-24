@@ -71,7 +71,7 @@ public class AutomaticGunScriptLPFP : MonoBehaviour {
 	//Totalt amount of ammo
 	[Tooltip("How much ammo the weapon should have.")]
 	public int ammo;
-    private int maxAmmo;
+    public int maxAmmo;
 	//Check if out of ammo
 	private bool outOfAmmo;
 
@@ -248,38 +248,6 @@ public class AutomaticGunScriptLPFP : MonoBehaviour {
 		if (randomMuzzleflash == true) 
 		{
 			randomMuzzleflashValue = UnityEngine.Random.Range (minRandomValue, maxRandomValue);
-		}
-
-		//Timescale settings
-		//Change timescale to normal when 1 key is pressed
-		if (Input.GetKeyDown (KeyCode.Alpha1)) 
-		{
-			Time.timeScale = 1.0f;
-			timescaleText.text = "1.0";
-		}
-		//Change timesccale to 50% when 2 key is pressed
-		if (Input.GetKeyDown (KeyCode.Alpha2)) 
-		{
-			Time.timeScale = 0.5f;
-			timescaleText.text = "0.5";
-		}
-		//Change timescale to 25% when 3 key is pressed
-		if (Input.GetKeyDown (KeyCode.Alpha3)) 
-		{
-			Time.timeScale = 0.25f;
-			timescaleText.text = "0.25";
-		}
-		//Change timescale to 10% when 4 key is pressed
-		if (Input.GetKeyDown (KeyCode.Alpha4)) 
-		{
-			Time.timeScale = 0.1f;
-			timescaleText.text = "0.1";
-		}
-		//Pause game when 5 key is pressed
-		if (Input.GetKeyDown (KeyCode.Alpha5)) 
-		{
-			Time.timeScale = 0.0f;
-			timescaleText.text = "0.0";
 		}
 
 		//Set current ammo text from ammo int

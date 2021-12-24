@@ -844,6 +844,8 @@ MonoBehaviour:
   slider: {fileID: 5466313512593035203}
   coin: {fileID: 1000011365394840, guid: 5142a683d65bbf84abea6f07db9099c7, type: 3}
   enemyDamage: 5
+  thrust: 100
+  openGate: 0
   maxDistance: 5
 --- !u!195 &-8779632858705030078
 NavMeshAgent:
@@ -881,8 +883,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   navAgent: {fileID: -8779632858705030078}
   target: {fileID: 0}
-  walkSpeed: 0.5
-  runSpeed: 4
+  walkSpeed: 1.5
+  runSpeed: 5
   patrolForThisTime: 15
   chaseDistance: 30
   attackDistance: 2

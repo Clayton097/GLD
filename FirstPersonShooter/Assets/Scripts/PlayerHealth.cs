@@ -28,6 +28,14 @@ public class PlayerHealth : MonoBehaviour
             Debug.Log("Player Curretn Health  = " + currentHealth);
         }
 
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            inventory.UseItem(1);
+        }else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            inventory.UseItem(2);
+        }
+
         PlayerDeath();
     }
     public void TakeDamage(int damage)
@@ -41,7 +49,7 @@ public class PlayerHealth : MonoBehaviour
     {
         //heal player
         currentHealth += heal;
-        healthBar.slider.value = currentHealth;//Update the PlayerHealthBar UI
+        healthBar.SetHealth(currentHealth);//Update the PlayerHealthBar UI
 
         //If health  is 100
         if (currentHealth > 100)
@@ -56,12 +64,10 @@ public class PlayerHealth : MonoBehaviour
         {
             inventory.AddItem(new ItemInventory.ItemPicked(collider.gameObject, collider.gameObject.tag));
             Destroy(collider.gameObject);
-            //if (!(currentHealth >= 100))
-            //{
-            //    HealPlayer(10);
-            //    collider.gameObject.SetActive(false);
-            //    Debug.Log("Player Curretn Health  = " + currentHealth);
-            //}
+        }else if (collider.gameObject.CompareTag("Ammo"))
+        {
+            inventory.AddItem(new ItemInventory.ItemPicked(collider.gameObject, collider.gameObject.tag));
+            Destroy(collider.gameObject);
         }
     }
 

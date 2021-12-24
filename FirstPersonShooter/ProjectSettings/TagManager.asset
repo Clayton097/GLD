@@ -14,6 +14,8 @@ TagManager:
   - HealthPotion
   - Coin
   - SpawnPoints
+  - Ammo
+  - Shop
   layers:
   - Default
   - TransparentFX
