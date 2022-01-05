@@ -5,37 +5,50 @@ using UnityEngine.UI;
 
 public class ShopUI : MonoBehaviour
 {
-    [Tooltip("Shop Menu Panel")]
-    public GameObject ShopMenu;
-    public static GameObject Canvas;
-
+    //public GameObject textObject;
+    public GameObject shopObject;
     // Start is called before the first frame update
     void Start()
     {
-        ShopMenu.SetActive(false);
+        //textObject.SetActive(false);
+        shopObject.SetActive(false);
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        /*
+        if (other.tag == "Player")
+        {
+            Debug.Log("player hit shop");
+            textObject.SetActive(true);
+        }
+        */
+
+        /*
+        if (Input.GetKeyDown("b"))
+        {
+            textObject.SetActive(false);
+            Debug.Log("B key Pressed");
+            shopObject.SetActive(true);
+        }
+        */
+
+        if (other.CompareTag("Player"))
+        {
+            //textObject.SetActive(false);           
+            shopObject.SetActive(true);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        //textObject.SetActive(false);
+        shopObject.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-    }
 
-    public void ShowBottomMenu(bool showMenu, string text = "")
-    {
-        ShopMenu.SetActive(showMenu);
-        ShopMenu.GetComponentInChildren<Text>().text = text;
     }
-
-    /*
-    private void OnCollisionEnter(Collision player)
-    {
-        if (player.gameObject.CompareTag("Player"))
-        {
-            Debug.Log("tajba hara");
-
-        }
-    }
-    */
-    
 }
