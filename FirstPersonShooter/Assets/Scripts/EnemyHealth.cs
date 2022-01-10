@@ -12,6 +12,7 @@ public class EnemyHealth : MonoBehaviour
     public Slider slider;
 
     public GameObject coin;
+    public GameObject milk;
     public int enemyDamage = 5;
 
     [SerializeField]
@@ -26,6 +27,8 @@ public class EnemyHealth : MonoBehaviour
     [Range(1f, 20f)]
     [Tooltip("Determines the maximum distance between the enemy and the player to deal damage")]
     float maxDistance;
+
+
     void Start()
     {
         player = FindObjectOfType<PlayerHealth>();
@@ -65,6 +68,14 @@ public class EnemyHealth : MonoBehaviour
         for (int i = 0; i < multiplier; i++)
         {
             Instantiate(coin, this.transform.position + new Vector3(0f, 0f, 0f), Quaternion.identity);
+        }
+    }
+
+    public void DropMilk(int multiplier = 1)
+    {
+        for (int i = 0; i < multiplier; i++)
+        {
+            Instantiate(milk, this.transform.position + new Vector3(0.5f, -0.1f, 0f), Quaternion.identity);
         }
     }
 

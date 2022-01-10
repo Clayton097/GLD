@@ -16,6 +16,7 @@ TagManager:
   - SpawnPoints
   - Ammo
   - Shop
+  - Boximon
   layers:
   - Default
   - TransparentFX

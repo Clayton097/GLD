@@ -1207,6 +1207,7 @@ MonoBehaviour:
   healthBarUI: {fileID: 4733248382788137277}
   slider: {fileID: 4415220822812175785}
   coin: {fileID: 1000011365394840, guid: 5142a683d65bbf84abea6f07db9099c7, type: 3}
+  milk: {fileID: 8662258556512106578, guid: 8768913d8e716a2408503e75059f31df, type: 3}
   enemyDamage: 5
   thrust: 100
   openGate: 0
@@ -1254,8 +1255,8 @@ MonoBehaviour:
   attackDistance: 2
   waitBeforeAttack: 2
   chaseAfterAttackDistance: 2
-  patrolRadiusMin: 20
-  patrolRadiusMax: 40
+  patrolRadiusMin: 10
+  patrolRadiusMax: 20
 --- !u!114 &7026733852228996699
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -19,7 +19,7 @@ public class BulletScript : MonoBehaviour
     public float maxDestroyTime;
 
     [Header("Impact Effect Prefabs")]
-    public Transform[] metalImpactPrefabs;
+    public Transform[] metalImpactPrefabs; 
 
     private void Start()
     {
@@ -45,6 +45,7 @@ public class BulletScript : MonoBehaviour
             if (collision.gameObject.GetComponent<EnemyHealth>().health <= 0) {
                 //Destroy bullet object
                 collision.gameObject.GetComponent<EnemyHealth>().DropCoin(Random.Range(1,3));
+                collision.gameObject.GetComponent<EnemyHealth>().DropMilk(1);
                 Destroy(collision.gameObject);
                 Debug.Log("Bug Destroyed");
                 Destroy(gameObject);
@@ -71,6 +72,24 @@ public class BulletScript : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+
+        //Boximon health bar decrease on each bullet hit and destroy bullet.
+        if (collision.transform.tag == "Boximon")
+        {
+            collision.gameObject.GetComponent<EnemyHealth>().health -= bulletDamage;
+            //Destroy bullet object
+            Destroy(gameObject);
+            //If health  lower than 0 destroy enemy.
+            if (collision.gameObject.GetComponent<EnemyHealth>().health <= 0)
+            {
+                
+                Destroy(collision.gameObject);
+                Debug.Log("Boximon Destroyed");
+                Destroy(gameObject);
+                
+            }
+        }
+
 
         /*
         //Destroy bug and bullet on collision.

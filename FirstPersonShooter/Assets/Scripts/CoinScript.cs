@@ -10,5 +10,4 @@ public class CoinScript : MonoBehaviour
         Destroy(gameObject);
         Debug.Log("Coin picked");
     }
-
 }

@@ -196,6 +196,7 @@ MonoBehaviour:
   healthBarUI: {fileID: 8580951287896129351}
   slider: {fileID: 748118513951153034}
   coin: {fileID: 1000011365394840, guid: 5142a683d65bbf84abea6f07db9099c7, type: 3}
+  milk: {fileID: 8662258556512106578, guid: 8768913d8e716a2408503e75059f31df, type: 3}
   enemyDamage: 5
   thrust: 100
   openGate: 0
@@ -229,11 +230,11 @@ MonoBehaviour:
   walkSpeed: 2
   runSpeed: 6
   patrolForThisTime: 15
-  chaseDistance: 50
+  chaseDistance: 15
   attackDistance: 2
   waitBeforeAttack: 2
   chaseAfterAttackDistance: 2
-  patrolRadiusMin: 5
+  patrolRadiusMin: 10
   patrolRadiusMax: 25
 --- !u!195 &-1232585235982883648
 NavMeshAgent:
