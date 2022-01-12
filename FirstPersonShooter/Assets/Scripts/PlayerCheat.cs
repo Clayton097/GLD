@@ -23,6 +23,7 @@ public class PlayerCheat : MonoBehaviour
             Destroy(player);
         }
 
+        //Destroy Enemies
         if (Input.GetKeyDown(KeyCode.O))
         {
             GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
@@ -30,7 +31,11 @@ public class PlayerCheat : MonoBehaviour
             {
                 GameObject.Destroy(enemy);
             }
+
+            Destroy(GameObject.FindWithTag("Skeleton"));
+            Destroy(GameObject.FindWithTag("Boximon"));
+
         }
-        
+
     }
 }

@@ -95,7 +95,6 @@ public class MetalonFollow : MonoBehaviour
         {
             metalonAnimator.Walk(false);
             enemyState = EnemyState.CHASE;
-            //zombieAudio.playScream();
         }
     }
 
@@ -156,7 +155,6 @@ public class MetalonFollow : MonoBehaviour
             attackTimer = 0f;
 
             //playerHealth.TakeDamage(5);
-            //zombieAudio.playAttack();
         }
 
         if (Vector3.Distance(transform.position, target.position) > attackDistance + chaseAfterAttackDistance)

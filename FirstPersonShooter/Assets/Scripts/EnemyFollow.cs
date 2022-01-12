@@ -90,7 +90,7 @@ public class EnemyFollow : MonoBehaviour
             patrolTimer = 0f;
         }
 
-        //Checks if the zombie is moving
+        //Checks if the skeleton is moving
         if (navAgent.velocity.sqrMagnitude > 0)
         {
             skeletonAnimator.Walk(true);
@@ -100,12 +100,11 @@ public class EnemyFollow : MonoBehaviour
             skeletonAnimator.Walk(false);
         }
 
-        //Checks distance between zombie and player
+        //Checks distance between skeleton and player
         if (Vector3.Distance(transform.position, target.position) <= chaseDistance)
         {
             skeletonAnimator.Walk(false);
             enemyState = EnemyState.CHASE;
-            //zombieAudio.playScream();
         }
     }
 
@@ -159,14 +158,13 @@ public class EnemyFollow : MonoBehaviour
 
         attackTimer += Time.deltaTime;
 
-        //Checks if the zombie can attack
+        //Checks if the skeleton can attack
         if (attackTimer > waitBeforeAttack)
         {
             skeletonAnimator.Attack(true);
             attackTimer = 0f;
 
             //playerHealth.TakeDamage(5);
-            //zombieAudio.playAttack();
         }
 
         if (Vector3.Distance(transform.position, target.position) > attackDistance + chaseAfterAttackDistance)
@@ -175,7 +173,7 @@ public class EnemyFollow : MonoBehaviour
         }
     }
 
-    //Sets a random destination for the zombie to go to, used when patrolling
+    //Sets a random destination for the skeleton to go to, used when patrolling
     void SetNewRandomDestination()
     {
         float randomRadius = Random.Range(patrolRadiusMin, patrolRadiusMax);

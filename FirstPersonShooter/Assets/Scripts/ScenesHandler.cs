@@ -15,4 +15,12 @@ public class ScenesHandler : MonoBehaviour
         Application.Quit();
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            SceneManager.LoadScene("Level2");
+        }
+    }
+
 }

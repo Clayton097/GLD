@@ -39,19 +39,19 @@ public class BoximonFollow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //If Metalon state is set to patrol
+        //If Boximon state is set to patrol
         if (enemyState == EnemyState.PATROL)
         {
             Patrol();
         }
 
-        //If Metalon state is set to chase
+        //If Boximon state is set to chase
         if (enemyState == EnemyState.CHASE)
         {
             Chase();
         }
 
-        //If Metalon state is set to attack
+        //If Boximon state is set to attack
         if (enemyState == EnemyState.ATTACK)
         {
             Attack();
@@ -79,7 +79,7 @@ public class BoximonFollow : MonoBehaviour
             patrolTimer = 0f;
         }
 
-        //Checks if the Metalon is moving
+        //Checks if the Boximon is moving
         if (navAgent.velocity.sqrMagnitude > 0)
         {
             boximonAnimator.Walk(true);
@@ -89,12 +89,11 @@ public class BoximonFollow : MonoBehaviour
             boximonAnimator.Walk(false);
         }
 
-        //Checks distance between Metalon and player
+        //Checks distance between Boximon and player
         if (Vector3.Distance(transform.position, target.position) <= chaseDistance)
         {
             boximonAnimator.Walk(false);
             enemyState = EnemyState.CHASE;
-            //zombieAudio.playScream();
         }
     }
 
@@ -105,7 +104,7 @@ public class BoximonFollow : MonoBehaviour
 
         navAgent.SetDestination(target.position);
 
-        //Checks if the Metalon is moving
+        //Checks if the Boximon is moving
         if (navAgent.velocity.sqrMagnitude > 0)
         {
             boximonAnimator.Run(true);
@@ -148,14 +147,13 @@ public class BoximonFollow : MonoBehaviour
 
         attackTimer += Time.deltaTime;
 
-        //Checks if the Metalon can attack
+        //Checks if the Boximon can attack
         if (attackTimer > waitBeforeAttack)
         {
             boximonAnimator.Attack(true);
             attackTimer = 0f;
 
             //playerHealth.TakeDamage(5);
-            //zombieAudio.playAttack();
         }
 
         if (Vector3.Distance(transform.position, target.position) > attackDistance + chaseAfterAttackDistance)
@@ -164,7 +162,7 @@ public class BoximonFollow : MonoBehaviour
         }
     }
 
-    //Sets a random destination for the Metalon to go to, used when patrolling
+    //Sets a random destination for the Boximon to go to, used when patrolling
     void SetNewRandomDestination()
     {
         float randomRadius = Random.Range(patrolRadiusMin, patrolRadiusMax);
