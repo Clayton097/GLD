@@ -4,9 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 public class CoinScore : MonoBehaviour
 {
-
     Text text;
-    public static int coinAmount;
+    public static int coinAmount = 0;
     // Start is called before the first frame update
     void Start()
     {

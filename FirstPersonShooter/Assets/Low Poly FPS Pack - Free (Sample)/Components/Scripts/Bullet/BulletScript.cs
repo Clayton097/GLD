@@ -19,12 +19,14 @@ public class BulletScript : MonoBehaviour
     public float maxDestroyTime;
 
     [Header("Impact Effect Prefabs")]
-    public Transform[] metalImpactPrefabs; 
+    public Transform[] metalImpactPrefabs;
+
 
     private void Start()
     {
         //Start destroy timer
         StartCoroutine(DestroyAfter());
+
     }
 
     //If the bullet collides with anything
@@ -49,6 +51,7 @@ public class BulletScript : MonoBehaviour
                 Destroy(collision.gameObject);
                 Debug.Log("Bug Destroyed");
                 Destroy(gameObject);
+                
             }
         }
 

@@ -76,6 +76,9 @@ public class PlayerHealth : MonoBehaviour
     {
         if (currentHealth <= 0)
         {
+            Destroy(GameObject.FindWithTag("Player"));
+            Cursor.visible = true;
+            Screen.lockCursor = false;
             SceneManager.LoadScene("GameOver");
         }
     }

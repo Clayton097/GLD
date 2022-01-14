@@ -89,6 +89,11 @@ public class EnemyHealth : MonoBehaviour
         if (Mathf.Abs(player.transform.position.z - transform.position.z) < maxDistance) AttackPlayer(enemyDamage);
     }
 
+    protected void TryAttackPlayerBoximon(float maxDistance)
+    {
+        if (Mathf.Abs(player.transform.position.z - transform.position.z) < maxDistance) AttackPlayer(enemyDamage);
+    }
+
     private void AttackPlayer(int damage, bool applyForce = false)
     {
         player.TakeDamage(damage);
