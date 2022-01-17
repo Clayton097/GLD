@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class BoatAnimation : MonoBehaviour
 {
@@ -8,10 +10,12 @@ public class BoatAnimation : MonoBehaviour
     [SerializeField] private Animator anim;
     [SerializeField] private string sailBoat = "SailBoat";
 
+    public GameObject levelCompleted;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        levelCompleted.SetActive(false);
     }
 
     // Update is called once per frame
@@ -26,6 +30,16 @@ public class BoatAnimation : MonoBehaviour
         {
             Debug.Log("AnimationPlaying");
             anim.Play(sailBoat, 0, 0.0f);
+            levelCompleted.SetActive(true);
+            StartCoroutine(LoadTextChangeScene());
         }    
+    }
+
+    IEnumerator LoadTextChangeScene()
+    {
+        yield return new WaitForSeconds(4f);
+        SceneManager.LoadScene("GameCompleted");
+        Cursor.visible = true;
+        Screen.lockCursor = false;
     }
 }
